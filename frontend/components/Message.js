@@ -1,5 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Message(props) {
-  return <div id="message">Nice job!</div>
+  const message = useSelector ((appState) => appState.infoMessage)
+  return <div id="message">{props.message}</div>
 }

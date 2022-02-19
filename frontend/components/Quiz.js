@@ -12,8 +12,10 @@ const canSubmitAnswer = () => {
     return selectedAnswer == null
 }
 
-useEffect ( () => {
-  dispatcher(fetchQuiz())
+useEffect( ()=> {
+  if(!state){
+    dispatcher(fetchQuiz())
+  }  
 }, [])
 
 const handleAnswer = (event, answerId) => {
@@ -28,7 +30,7 @@ const handleAnswer = (event, answerId) => {
         state ? (
           <>
             <h2>{state.question}</h2>
-
+               
             <div id="quizAnswers">
               { state.answers.map( (answer) => {
                 const isSelectedAnswer = selectedAnswer == answer.answer_id
